@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Restaurent_Management_SystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admin_1">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="date_time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="admin_staff">
+    <Key>
+      <PropertyRef Name="admin_staff_id" />
+    </Key>
+    <Property Name="admin_staff_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Staff_id" Type="int" />
+    <Property Name="admin_id" Type="int" />
+    <Property Name="date_time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer_payment">
+    <Key>
+      <PropertyRef Name="Customer_payment" />
+    </Key>
+    <Property Name="Customer_payment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cust_id" Type="int" />
+    <Property Name="payment_id" Type="int" />
+    <Property Name="Date_Time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customers">
+    <Key>
+      <PropertyRef Name="cust_id" />
+    </Key>
+    <Property Name="cust_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fullName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="Zip" Type="bigint" Nullable="false" />
+    <Property Name="Date_Time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FeedBack">
+    <Key>
+      <PropertyRef Name="FeedBack_id" />
+    </Key>
+    <Property Name="FeedBack_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fisrt_Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Last_Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Comment" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Date_Time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="payment">
+    <Key>
+      <PropertyRef Name="payment_id" />
+    </Key>
+    <Property Name="payment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameOnCard" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CraditCardNumber" Type="bigint" Nullable="false" />
+    <Property Name="EXPMonth" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CVV" Type="int" Nullable="false" />
+    <Property Name="EXPYear" Type="bigint" Nullable="false" />
+    <Property Name="Date_Time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="staff">
+    <Key>
+      <PropertyRef Name="Staff_id" />
+    </Key>
+    <Property Name="Staff_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Staff_Type" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="staff_Image" Type="varchar(max)" Nullable="false" />
+    <Property Name="date_time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_invoice">
+    <Key>
+      <PropertyRef Name="in_id" />
+    </Key>
+    <Property Name="in_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="in_fk_Login_id" Type="int" />
+    <Property Name="in_total_bill" Type="float" />
+    <Property Name="in_Date_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_order">
+    <Key>
+      <PropertyRef Name="o_id" />
+    </Key>
+    <Property Name="o_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="o_fk_pro_Food_id" Type="int" />
+    <Property Name="o_fk_in_id" Type="int" />
+    <Property Name="o_Quantity" Type="int" />
+    <Property Name="o_bill" Type="float" />
+    <Property Name="o_unitprice" Type="int" />
+    <Property Name="o_Date_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tbl_product">
+    <Key>
+      <PropertyRef Name="pro_Food_id" />
+    </Key>
+    <Property Name="pro_Food_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pro_FoodName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="pro_FoodDescription" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="pro_FoodPrice" Type="bigint" Nullable="false" />
+    <Property Name="pro_dealsName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="pro_FoodImage" Type="varchar(max)" Nullable="false" />
+    <Property Name="pro_Date_Time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="User_Login">
+    <Key>
+      <PropertyRef Name="Login_id" />
+    </Key>
+    <Property Name="Login_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="date_time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User_Registration">
+    <Key>
+      <PropertyRef Name="Reg_id" />
+    </Key>
+    <Property Name="Reg_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Reg_Type" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="date_time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User_RegLogin">
+    <Key>
+      <PropertyRef Name="RegLogin_id" />
+    </Key>
+    <Property Name="RegLogin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login_id" Type="int" />
+    <Property Name="Registraion_id" Type="int" />
+    <Property Name="admin_id" Type="int" />
+    <Property Name="date_time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__admin_sta__admin__31EC6D26">
+    <End Role="admin_1" Type="Self.admin_1" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="admin_staff" Type="Self.admin_staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="admin_1">
+        <PropertyRef Name="admin_id" />
+      </Principal>
+      <Dependent Role="admin_staff">
+        <PropertyRef Name="admin_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__admin_sta__Staff__30F848ED">
+    <End Role="staff" Type="Self.staff" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="admin_staff" Type="Self.admin_staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="staff">
+        <PropertyRef Name="Staff_id" />
+      </Principal>
+      <Dependent Role="admin_staff">
+        <PropertyRef Name="Staff_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customer___cust___4316F928">
+    <End Role="customers" Type="Self.customers" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Customer_payment" Type="Self.Customer_payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customers">
+        <PropertyRef Name="cust_id" />
+      </Principal>
+      <Dependent Role="Customer_payment">
+        <PropertyRef Name="cust_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customer___payme__440B1D61">
+    <End Role="payment" Type="Self.payment" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Customer_payment" Type="Self.Customer_payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="payment">
+        <PropertyRef Name="payment_id" />
+      </Principal>
+      <Dependent Role="Customer_payment">
+        <PropertyRef Name="payment_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_invoi__in_fk__38996AB5">
+    <End Role="User_Login" Type="Self.User_Login" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_invoice" Type="Self.tbl_invoice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Login">
+        <PropertyRef Name="Login_id" />
+      </Principal>
+      <Dependent Role="tbl_invoice">
+        <PropertyRef Name="in_fk_Login_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_order__o_fk___3B75D760">
+    <End Role="tbl_product" Type="Self.tbl_product" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_order" Type="Self.tbl_order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_product">
+        <PropertyRef Name="pro_Food_id" />
+      </Principal>
+      <Dependent Role="tbl_order">
+        <PropertyRef Name="o_fk_pro_Food_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tbl_order__o_fk___3C69FB99">
+    <End Role="tbl_invoice" Type="Self.tbl_invoice" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tbl_order" Type="Self.tbl_order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_invoice">
+        <PropertyRef Name="in_id" />
+      </Principal>
+      <Dependent Role="tbl_order">
+        <PropertyRef Name="o_fk_in_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User_RegL__admin__2B3F6F97">
+    <End Role="admin_1" Type="Self.admin_1" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="User_RegLogin" Type="Self.User_RegLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="admin_1">
+        <PropertyRef Name="admin_id" />
+      </Principal>
+      <Dependent Role="User_RegLogin">
+        <PropertyRef Name="admin_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User_RegL__Login__29572725">
+    <End Role="User_Login" Type="Self.User_Login" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="User_RegLogin" Type="Self.User_RegLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Login">
+        <PropertyRef Name="Login_id" />
+      </Principal>
+      <Dependent Role="User_RegLogin">
+        <PropertyRef Name="Login_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User_RegL__Regis__2A4B4B5E">
+    <End Role="User_Registration" Type="Self.User_Registration" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="User_RegLogin" Type="Self.User_RegLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Registration">
+        <PropertyRef Name="Reg_id" />
+      </Principal>
+      <Dependent Role="User_RegLogin">
+        <PropertyRef Name="Registraion_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="spInsert_staff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+    <Parameter Name="Staff_Type" Type="varchar" Mode="In" />
+    <Parameter Name="Gender" Type="char" Mode="In" />
+    <Parameter Name="staff_Image" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="spInsertIntoCutomerPayment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fullName" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Address" Type="varchar" Mode="In" />
+    <Parameter Name="City" Type="varchar" Mode="In" />
+    <Parameter Name="Zip" Type="bigint" Mode="In" />
+    <Parameter Name="NameOnCard" Type="varchar" Mode="In" />
+    <Parameter Name="CraditCardNumber" Type="bigint" Mode="In" />
+    <Parameter Name="EXPMonth" Type="varchar" Mode="In" />
+    <Parameter Name="CVV" Type="int" Mode="In" />
+    <Parameter Name="EXPYear" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="spInsertIntoDeals" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="pro_FoodName" Type="varchar" Mode="In" />
+    <Parameter Name="pro_FoodDescription" Type="varchar" Mode="In" />
+    <Parameter Name="pro_FoodPrice" Type="bigint" Mode="In" />
+    <Parameter Name="pro_FoodImage" Type="varchar(max)" Mode="In" />
+    <Parameter Name="pro_dealsName" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="spInsertRegLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+    <Parameter Name="Reg_Type" Type="varchar" Mode="In" />
+    <Parameter Name="Gender" Type="char" Mode="In" />
+  </Function>
+  <EntityContainer Name="Restaurent_Management_SystemModelStoreContainer">
+    <EntitySet Name="admin_1" EntityType="Self.admin_1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="admin_staff" EntityType="Self.admin_staff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer_payment" EntityType="Self.Customer_payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customers" EntityType="Self.customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeedBack" EntityType="Self.FeedBack" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="payment" EntityType="Self.payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="staff" EntityType="Self.staff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_invoice" EntityType="Self.tbl_invoice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_order" EntityType="Self.tbl_order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_product" EntityType="Self.tbl_product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Login" EntityType="Self.User_Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Registration" EntityType="Self.User_Registration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_RegLogin" EntityType="Self.User_RegLogin" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__admin_sta__admin__31EC6D26" Association="Self.FK__admin_sta__admin__31EC6D26">
+      <End Role="admin_1" EntitySet="admin_1" />
+      <End Role="admin_staff" EntitySet="admin_staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK__admin_sta__Staff__30F848ED" Association="Self.FK__admin_sta__Staff__30F848ED">
+      <End Role="staff" EntitySet="staff" />
+      <End Role="admin_staff" EntitySet="admin_staff" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Customer___cust___4316F928" Association="Self.FK__Customer___cust___4316F928">
+      <End Role="customers" EntitySet="customers" />
+      <End Role="Customer_payment" EntitySet="Customer_payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Customer___payme__440B1D61" Association="Self.FK__Customer___payme__440B1D61">
+      <End Role="payment" EntitySet="payment" />
+      <End Role="Customer_payment" EntitySet="Customer_payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_invoi__in_fk__38996AB5" Association="Self.FK__tbl_invoi__in_fk__38996AB5">
+      <End Role="User_Login" EntitySet="User_Login" />
+      <End Role="tbl_invoice" EntitySet="tbl_invoice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_order__o_fk___3B75D760" Association="Self.FK__tbl_order__o_fk___3B75D760">
+      <End Role="tbl_product" EntitySet="tbl_product" />
+      <End Role="tbl_order" EntitySet="tbl_order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tbl_order__o_fk___3C69FB99" Association="Self.FK__tbl_order__o_fk___3C69FB99">
+      <End Role="tbl_invoice" EntitySet="tbl_invoice" />
+      <End Role="tbl_order" EntitySet="tbl_order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User_RegL__admin__2B3F6F97" Association="Self.FK__User_RegL__admin__2B3F6F97">
+      <End Role="admin_1" EntitySet="admin_1" />
+      <End Role="User_RegLogin" EntitySet="User_RegLogin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User_RegL__Login__29572725" Association="Self.FK__User_RegL__Login__29572725">
+      <End Role="User_Login" EntitySet="User_Login" />
+      <End Role="User_RegLogin" EntitySet="User_RegLogin" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User_RegL__Regis__2A4B4B5E" Association="Self.FK__User_RegL__Regis__2A4B4B5E">
+      <End Role="User_Registration" EntitySet="User_Registration" />
+      <End Role="User_RegLogin" EntitySet="User_RegLogin" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,147 @@
+﻿
+
+  body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+        .header {
+            top: -1px;
+            left: 0;
+            background-color:  black;
+            width: 100%;
+            padding-top: 3px;
+            position: fixed;
+            box-shadow: 0 4px 8px 0 yellow;
+        }
+
+       form {
+            border: 3px solid #f1f1f1;
+            width: 35%;
+            margin-left: 35%;
+            cursor:pointer;
+          
+             }
+       
+        .form:hover {
+            box-shadow: 0 4px 8px 0 blue;
+        }
+
+        input[type=text], input[type=password] ,input[type=dropdown]{
+            width: 100%;
+            padding: 10px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius:7px;
+        }
+
+        .Loginbutton {
+            background-color:black;
+            color: gray;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 15px;
+            border-radius: 7px;
+        }
+
+            .Loginbutton:hover {
+               
+                color: white;
+                box-shadow: 0 4px 8px 0 yellow;
+            }
+          
+
+
+        .imgcontainer {
+            text-align: center;
+            margin: 2px 0 12px 0;
+        }
+
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+
+       
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+       
+        /* Change styles for span and cancel button on extra small screens */
+           .field-validation-error {
+            color: red;
+        }
+
+           .signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+           .cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: black;
+  float:right;
+  color:white;
+  border:none;
+}
+           .cancelbtn:hover
+           {
+                               box-shadow: 0 4px 8px 0 yellow;
+
+
+           }
+
+
+.dropdown {
+            width: 100%;
+           background-color:black;
+
+}
+
+.abc
+ {
+   margin-left:4%;
+}

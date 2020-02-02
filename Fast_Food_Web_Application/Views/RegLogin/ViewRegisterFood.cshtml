@@ -1,0 +1,157 @@
+﻿
+
+
+@model System.Data.DataTable
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewRegisterFood</title>
+
+    <style>
+        table {
+            width: 60%;
+            margin-left:20%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        
+            }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #eee;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        table  th {
+            background-color:  rosybrown;
+            color: white;
+        }
+        .AddFoodButton {
+            width: auto;
+            padding: 10px 18px;
+            background-color: black;
+            float: right;
+            color: white;
+            border: none;
+            margin-right: 20%;
+        }
+
+            .AddFoodButton:hover {
+                box-shadow: 0 4px 8px 0 yellow;
+            }
+
+
+        .topnav {
+            background-color: black;
+            position: fixed;
+            padding-top: 1px;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            transition: top 0.3s;
+            box-shadow: 0 4px 8px 0 yellow;
+        }
+
+        .sidenavPosition {
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 15px;
+            background-color: black;
+            border: none;
+            color: gray;
+            border-bottom: 3px solid transparent;
+            margin-top: 8px;
+        }
+
+            .sidenavPosition:hover {
+                color: white;
+                cursor: pointer;
+                border-bottom: 3px solid red;
+            }
+
+        .b
+         {
+            margin-left:6%;
+        }
+
+      
+    </style>
+
+</head>
+<body>
+    <div class="topnav">
+    <div class="b">
+        <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("EveryDayValue", "Home")'" value="EVERYDAY VALUE" />
+        <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("MakeItAMeal", "Home")'" value="MAKE IT A MEAL " />
+        <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("MealBox", "Home")'" value="MEAL BOX " />
+        <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("Sharing", "Home")'" value="SHARING " />
+        <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("Promotions", "Home")'" value="PROMOTIONS" />
+        <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("Snacks", "Home")'" value="SNAKS" />
+        <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("MidNightDeals", "Home")'" value="MIDNIGHT DEALS" />
+        </div>
+
+
+
+    </div><br><br><br><br>
+    <input class="AddFoodButton" type="submit" name="name" onclick="location.href = '@Url.Action("RegisterFood", "RegLogin")'" value="Add Product " />
+    <br><br><br>
+    <table class="abc">
+
+        <tr>
+            <th>Food Name</th>
+            <th>Food Description</th>
+            <th>Food Price</th>
+            <th>Deals Type</th>
+            <th>Food Image</th>
+            <th>Date/Time</th>
+
+            <th></th>
+            <th></th>
+        </tr>
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+            <tr>
+
+                <td>@Model.Rows[i][1] </td>
+                <td>@Model.Rows[i][2] </td>
+                <td>@Model.Rows[i][3] </td>
+                <td>@Model.Rows[i][4] </td>
+                <td>@Model.Rows[i][5] </td>
+                <td>@Model.Rows[i][6] </td>
+
+               
+                <td>
+                    <a href="@Url.Action("Edit","RegLogin", new { @id = @Model.Rows[i][0] })">Edit</a>
+
+                   
+                </td>
+                <td>
+                    <a href="@Url.Action("Delete", "RegLogin", new { @id = @Model.Rows[i][0] }) ">Delete</a>
+                    </td>
+            </tr>
+        }
+
+    </table><br>
+    
+
+</body>
+</html>

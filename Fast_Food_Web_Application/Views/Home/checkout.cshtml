@@ -1,0 +1,189 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>checkout</title>
+
+    <style>
+        table {
+            width: 60%;
+            margin-left: 20%;
+            margin-top:5%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #eee;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        table th {
+            background-color: rosybrown;
+            color: white;
+        }
+        .checkoutbutton {
+            margin-top: 20px;
+            cursor: pointer;
+            padding: 7px 16px;
+            text-decoration: none;
+            font-size: 15px;
+            background-color: black;
+            border: none;
+            color: gray;
+            border-radius: 6px;
+            border-bottom: 3px solid transparent;
+        }
+        .topnav {
+            background-color: black;
+            position: absolute;
+            padding-top: 1px;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            transition: top 0.3s;
+            box-shadow: 0 4px 8px 0 yellow;
+        }
+        .a {
+            margin-left:80px;
+        }
+        .sidenavPosition {
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 15px;
+            background-color: black;
+            border: none;
+            color: gray;
+            border-bottom: 3px solid transparent;
+            margin-top: 8px;
+        }
+
+            .sidenavPosition:hover {
+                color: white;
+                cursor: pointer;
+                border-bottom: 3px solid red;
+            }
+
+            .checkoutbutton:hover {
+                color: white;
+                cursor: pointer;
+                border-bottom: 3px solid red;
+            }
+
+
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <div class="a">
+        <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("EveryDayValue", "Home")'" value="EVERYDAY VALUE" />
+        <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("MakeItAMeal", "Home")'" value="MAKE IT A MEAL " />
+        <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("MealBox", "Home")'" value="MEAL BOX " />
+        <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("Sharing", "Home")'" value="SHARING " />
+        <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("Promotions", "Home")'" value="PROMOTIONS" />
+        <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("Snacks", "Home")'" value="SNAKS" />
+        <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("MidNightDeals", "Home")'" value="MIDNIGHT DEALS" />
+            </div>
+    </div>
+
+
+    @if (TempData["card"] != null)
+{
+
+
+    <table class="table table-responsive">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>PRICE</th>
+                <th>QUANTITY</th>
+                <th>BILL</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in TempData["card"] as List<Fast_Food_Web_Application.Models.card>)
+            {
+
+                <tr>
+                    <td>@item.pro_product_id</td>
+                    <td>@item.pro_product_Name</td>
+                    <td>@item.pro_product_Price</td>
+                    <td>@item.qty</td>
+                    <td>@item.pro_product_Bill</td>
+                    <td>
+                        <input class="checkoutbutton" type="submit" name="name" onclick="location.href = '@Url.Action("Remove", new { id = @item.pro_product_id})'" value="&#10008; " />
+                    </td>
+                </tr>
+
+            }
+
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+
+                <td>Total:  <span style="color:red;"> @TempData["total"] </span></td>
+
+            </tr>
+        </tfoot>
+
+    </table>
+
+
+
+
+}
+else
+{
+        <h2 style="color:red;padding-top:10%;text-align:center;">Sorry Cart is empty....</h2>
+    <p style ="color:red;padding-top:2%;margin-left:50%;">
+        @Html.ActionLink("Go Back", "EveryDayValue", "Home")
+    </p style>
+    }
+   @if (TempData["card"] != null)
+    {
+   
+     <span style="float:right;margin-right:20%;">
+        <input class="checkoutbutton" type="submit" name="name" onclick="location.href='@Url.Action("Login", "RegLogin")'" value="Check Out" />
+    </span>
+    
+    }
+    @*
+       @if (TempData["card"] != null)
+    {
+
+    
+    using (Html.BeginForm())
+    {
+    <span style="float:right;margin-right:20%;">
+        <input class="checkoutbutton" type="submit" name="name" value="Check Out" />
+    </span>
+    }
+    }*@
+
+
+
+</body>
+</html>

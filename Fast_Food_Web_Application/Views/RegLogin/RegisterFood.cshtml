@@ -1,0 +1,274 @@
+﻿
+@model Fast_Food_Web_Application.Models.tbl_product_Class
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RegisterFood</title>
+<style>
+
+
+    body {
+        font-family: Arial;
+        font-size: 17px;
+        padding: 8px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .header {
+        top: -1px;
+        left: 0;
+        background-color: black;
+        width: 100%;
+        padding-top: 3px;
+        position: fixed;
+        box-shadow: 0 4px 8px 0 yellow;
+    }
+
+    form {
+        border: 3px solid #f1f1f1;
+        width: 35%;
+        margin-left: 35%;
+        cursor: pointer;
+    }
+
+    .form:hover {
+        box-shadow: 0 4px 8px 0 blue;
+    }
+
+    input[type=text], input[type=password], input[type=dropdown] {
+        width: 100%;
+        padding: 10px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        border-radius: 7px;
+    }
+
+    .Loginbutton {
+        background-color: black;
+        color: gray;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        font-size: 15px;
+        border-radius: 7px;
+    }
+
+        .Loginbutton:hover {
+            color: white;
+            box-shadow: 0 4px 8px 0 yellow;
+        }
+
+
+
+    .imgcontainer {
+        text-align: center;
+        margin: 2px 0 12px 0;
+    }
+
+    img.avatar {
+        width: 40%;
+        border-radius: 50%;
+    }
+
+
+    .row {
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        -ms-flex-wrap: wrap; /* IE10 */
+        flex-wrap: wrap;
+        margin: 0 -16px;
+    }
+
+    .col-25 {
+        -ms-flex: 25%; /* IE10 */
+        flex: 25%;
+    }
+
+    .col-50 {
+        -ms-flex: 50%; /* IE10 */
+        flex: 50%;
+    }
+
+    .col-75 {
+        -ms-flex: 75%; /* IE10 */
+        flex: 75%;
+    }
+
+    .col-25,
+    .col-50,
+    .col-75 {
+        padding: 0 16px;
+    }
+
+    .container {
+        background-color: #f2f2f2;
+        padding: 5px 20px 15px 20px;
+        border: 1px solid lightgrey;
+        border-radius: 3px;
+    }
+
+
+    /* Change styles for span and cancel button on extra small screens */
+    .field-validation-error {
+        color: red;
+    }
+
+    .signin {
+        background-color: #f1f1f1;
+        text-align: center;
+    }
+
+    .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: black;
+        float: right;
+        color: white;
+        border: none;
+    }
+
+        .cancelbtn:hover {
+            box-shadow: 0 4px 8px 0 yellow;
+        }
+
+
+    .dropdown {
+        width: 100%;
+        background-color: black;
+    }
+
+    .abc {
+        margin-left: 4%;
+    }
+    </style>
+
+</head>
+<body>
+  
+    @{
+       
+        List<SelectListItem> l1 = new List<SelectListItem>();
+        l1.Add(new SelectListItem() { Text = "EVERYDAY VALUE" });
+        l1.Add(new SelectListItem() { Text = "MAKE IT A MEAL" });
+        l1.Add(new SelectListItem() { Text = "MEAL BOX" });
+        l1.Add(new SelectListItem() { Text = "SHARING" });
+        l1.Add(new SelectListItem() { Text = "PROMOTION" });
+        l1.Add(new SelectListItem() { Text = "SNAKS" });
+        l1.Add(new SelectListItem() { Text = "MIDNIGHT DEALS" });
+            
+
+    }
+  
+    <div class=" header">
+        <h1 style="color:white;font-size:20px;padding-left:10%;">Add Food</h1>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <hr>
+    <br>
+    @using (@Html.BeginForm("RegisterFood", "RegLogin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+        <div class="form">
+           
+           
+
+                  @*   <td>@Html.DisplayNameFor(model =>model.DealsType_id) </td>
+                <td>
+                    @Html.DropDownListFor(model => model.DealsType_id, new SelectList(Model.DealsCollections, "DealsType_id", "DealsName"),"Select")
+
+                    </td>
+                *@
+              
+            <br>
+      <table>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.pro_dealsName) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+                <td style="background-color:red;color:red;">  @Html.DropDownListFor(model => model.pro_dealsName, l1, "---------Select Deal Type---------")</td>
+
+                             </tr>
+        </table>
+        <br><br>
+    
+
+    @Html.LabelFor(model => model.pro_FoodName)<br>
+
+    @Html.EditorFor(model => model.pro_FoodName)<br>
+
+
+    @Html.ValidationMessageFor(model => model.pro_FoodName)<br>
+
+    @*for Food Description*@
+
+    @Html.LabelFor(model => model.pro_FoodDescription)<br>
+    @Html.EditorFor(model => model.pro_FoodDescription)<br>
+
+
+    @Html.ValidationMessageFor(model => model.pro_FoodDescription)<br>
+
+
+    @*for Price*@
+
+    @Html.LabelFor(model => model.pro_FoodPrice)<br>
+
+    @Html.TextBoxFor(model => model.pro_FoodPrice)<br>
+
+    @Html.ValidationMessageFor(model => model.pro_FoodPrice)<br>
+
+    @*for FoodImages*@
+
+    @Html.LabelFor(model => model.pro_FoodImage) <br>
+
+    <input type="file" name="file" /><br>
+               
+
+    @Html.ValidationMessageFor(model => model.pro_FoodImage)<br>
+
+    <input class="Loginbutton" type="submit" name="name" onclick="location.href='@Url.Action("ViewRegisterFood", "RegLogin")" value="Insert Food " />
+
+                <table cellspacing="10" cellpadding="10">
+           <tr><td><p style="width:100%">
+                       @Html.ActionLink("Go Back", "ViewRegisterFood", "RegLogin")
+</p>
+</td>
+               <td style="width:100%">
+                   <input class="Loginbutton" type="reset" name="name" value="Clear " /><br>
+               </td>
+                    </tr>
+                         </table>
+
+    
+            
+</div>
+    }
+  
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        @Html.ViewData["Message"]
+
+
+
+
+
+
+
+</body>
+</html>

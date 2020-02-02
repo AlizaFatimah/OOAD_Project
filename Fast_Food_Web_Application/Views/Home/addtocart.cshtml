@@ -1,0 +1,223 @@
+﻿@model Fast_Food_Web_Application.Models.tbl_product
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>addtocart</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f1f1f1;
+            padding: 20px;
+            font-family: Arial;
+        }
+
+        .header {
+            top: -1px;
+            left: 0;
+            background-color: black;
+            width: 100%;
+            padding-top: 3%;
+            position: fixed;
+            box-shadow: 0 4px 8px 0 yellow;
+        }
+
+        .main {
+            max-width: 500px;
+            padding-top: 8%;
+            margin-left: 23%;
+            position: absolute;
+            padding-bottom: 2%;
+          
+        }
+
+
+
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+      
+            overflow: auto;
+         
+        }
+        .checkoutbutton {
+            margin-top: 20px;
+            cursor: pointer;
+            padding: 7px 16px;
+            text-decoration: none;
+            font-size: 15px;
+            background-color: black;
+            border: none;
+            color: gray;
+            border-radius: 6px;
+            border-bottom: 3px solid transparent;
+        }
+
+            .checkoutbutton:hover {
+                color: white;
+                cursor: pointer;
+                border-bottom: 3px solid red;
+            }
+        .topnav {
+            background-color: black;
+            position: absolute;
+            padding-top: 1px;
+            top: 0%;
+            left: 0;
+            right: 0;
+            width: 100%;
+            transition: top 0.3s;
+            box-shadow: 0 4px 8px 0 yellow;
+        }
+
+        .sidenavPosition {
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 15px;
+            background-color: black;
+            border: none;
+            color: gray;
+            border-bottom: 3px solid transparent;
+            margin-top: 8px;
+        }
+
+            .sidenavPosition:hover {
+                color: white;
+                cursor: pointer;
+                border-bottom: 3px solid red;
+            }
+        .b {
+           
+            margin-left: 40%;
+        }
+        .c {
+            margin-left: 5%;
+        }
+    </style>
+
+</head>
+<body>
+
+        <div class="topnav">
+       
+        <div class="c">
+            <input class="sidenavPosition" type="submit" name="name" onclick="openNav()" value="&#9776 Menue" />
+
+            <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("EveryDayValue", "Home")'" value="EVERYDAY VALUE" />
+            <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("MakeItAMeal", "Home")'" value="MAKE IT A MEAL " />
+            <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("MealBox", "Home")'" value="MEAL BOX " />
+            <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("Sharing", "Home")'" value="SHARING " />
+            <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("Promotions", "Home")'" value="PROMOTIONS" />
+            <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("Snacks", "Home")'" value="SNAKS" />
+            <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("MidNightDeals", "Home")'" value="MIDNIGHT DEALS" />
+
+
+        </div>
+    </div>
+
+    
+    
+
+    @using (@Html.BeginForm())
+    {
+    
+        
+    
+        
+            
+        <div class="main">
+            
+                <table>
+
+                    <tr>
+
+                        <td>
+                            <div class="clearfix">
+                                <div style="border: 2px solid navy; width:150%;padding:10% ;color: navy; font-weight: bold; box-shadow: 0 4px 8px 0 navy;border-bottom:3px solid red;text-align:center">
+
+
+                                    <img style="min-height:200px; width:400px;float:left;" src="@Url.Content(Model.pro_FoodImage)" />
+
+                                    <div class="b">
+                                        <h1> @Model.pro_FoodName</h1>
+
+                                        <h6> @Model.pro_FoodDescription</h6>
+                                        <h2>Price: @Model.pro_FoodPrice PKR</h2>
+
+                                        Quantity: <input style="width:30%;" type="number" name="qty" value="1" id="qty" min="1" max="10" /><br>
+
+                                        <input class="checkoutbutton" type="submit" onclick="location.href = '@Url.Action("EveryDayValue", "Home")'" value="Add to Cart" />
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+                        </td>
+                    </tr>
+
+                </table>
+         
+            @*  <div class="clearfix">
+        <h2>With Clearfix</h2>
+        <img style="min-height:200px; width:200px;float:left;" src="@Url.Content(Model.pro_FoodImage)" />
+       <div class="b">
+         <h1>Product Name: @Model.pro_FoodName</h1>
+        <h2>Price: @Model.pro_FoodPrice PKR</h2>
+        <h6>Description: @Model.pro_FoodDescription</h6>
+
+        <input type="number" name="qty" value="1" id="qty" min="1" max="10" />
+
+        <input type="submit" onclick="location.href = '@Url.Action("EveryDayValue", "Home")'" value="Submit" class="btm" />
+           </div>
+    </div>*@
+           @* <div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-4 col-md-4 col-sm-4">
+
+
+
+        </div>
+
+
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+
+                        <h1>Product Name: @Model.pro_FoodName</h1>
+                        <h2>Price: @Model.pro_FoodPrice PKR</h2>
+                        <h6>Description: @Model.pro_FoodDescription</h6>
+
+                        <input type="number" name="qty" value="1" id="qty" min="1" max="10" />
+
+                        <input type="submit" onclick="location.href = '@Url.Action("EveryDayValue", "Home")'" value="Submit" class="btm" />
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+*@
+
+        </div>
+    }
+   
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿
+    * {
+            box-sizing: border-box;
+            
+        }
+
+        body {
+            background-color: #f1f1f1;
+            padding: 20px;
+            font-family: Arial;
+            
+        }
+
+        /* Center website */
+        .main {
+            max-width: 500px;
+            padding-top: 2%;
+            margin-left: 11%;
+            position: absolute;
+            padding-bottom: 2%;
+        }
+
+        .displayDetail {
+            font-weight: bold;
+            color: black;
+        }
+
+        .cellPadding_tab {
+           background-color:ActiveBorder;
+        }
+
+        .FoodImage {
+              width: 360px;
+            max-height: 220px;
+        }
+
+        .showImageTable {
+            box-sizing: border-box;
+            border-left-color: red;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            cursor:pointer;
+        }
+        .showImageTable:hover {
+                box-shadow: 0 4px 8px 0 red;
+            }
+
+
+        .addToBucketButton {
+              border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: gray;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+      
+
+          
+ #Everyboder {
+           padding-right: 650%;
+            padding-top: 2%; 
+            border-bottom: 3px solid red;
+             box-shadow: 0 4px 8px 0 navy;
+   font-size:20px;        
+        }
+         #main {
+            transition: margin-left .5s;
+            padding-left: 8%;
+        }

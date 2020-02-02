@@ -1,0 +1,269 @@
+﻿
+@model Fast_Food_Web_Application.Models.User_LoginClass
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+   <style>
+
+
+       body {
+           font-family: Arial;
+           font-size: 17px;
+           padding: 8px;
+       }
+
+       * {
+           box-sizing: border-box;
+       }
+
+       .header {
+           top: -1px;
+           left: 0;
+           background-color: black;
+           width: 100%;
+           padding-top: 3px;
+           position: fixed;
+           box-shadow: 0 4px 8px 0 yellow;
+       }
+
+       form {
+           border: 3px solid #f1f1f1;
+           width: 35%;
+           margin-left: 35%;
+           cursor: pointer;
+       }
+
+       .form:hover {
+           box-shadow: 0 4px 8px 0 blue;
+       }
+
+       input[type=text], input[type=password], input[type=dropdown] {
+           width: 100%;
+           padding: 10px 20px;
+           margin: 8px 0;
+           display: inline-block;
+           border: 1px solid #ccc;
+           box-sizing: border-box;
+           border-radius: 7px;
+       }
+
+       .Loginbutton {
+           background-color: black;
+           color: gray;
+           padding: 14px 20px;
+           margin: 8px 0;
+           border: none;
+           cursor: pointer;
+           width: 100%;
+           font-size: 15px;
+           border-radius: 7px;
+       }
+
+           .Loginbutton:hover {
+               color: white;
+               box-shadow: 0 4px 8px 0 yellow;
+           }
+
+
+
+       .imgcontainer {
+           text-align: center;
+           margin: 2px 0 12px 0;
+       }
+
+       img.avatar {
+           width: 40%;
+           border-radius: 50%;
+       }
+
+
+       .row {
+           display: -ms-flexbox; /* IE10 */
+           display: flex;
+           -ms-flex-wrap: wrap; /* IE10 */
+           flex-wrap: wrap;
+           margin: 0 -16px;
+       }
+
+       .col-25 {
+           -ms-flex: 25%; /* IE10 */
+           flex: 25%;
+       }
+
+       .col-50 {
+           -ms-flex: 50%; /* IE10 */
+           flex: 50%;
+       }
+
+       .col-75 {
+           -ms-flex: 75%; /* IE10 */
+           flex: 75%;
+       }
+
+       .col-25,
+       .col-50,
+       .col-75 {
+           padding: 0 16px;
+       }
+
+       .container {
+           background-color: #f2f2f2;
+           padding: 5px 20px 15px 20px;
+           border: 1px solid lightgrey;
+           border-radius: 3px;
+       }
+
+
+       /* Change styles for span and cancel button on extra small screens */
+       .field-validation-error {
+           color: red;
+       }
+
+       .signin {
+           background-color: #f1f1f1;
+           text-align: center;
+       }
+
+       .cancelbtn {
+           width: auto;
+           padding: 10px 18px;
+           background-color: black;
+           float: right;
+           color: white;
+           border: none;
+       }
+
+           .cancelbtn:hover {
+               box-shadow: 0 4px 8px 0 yellow;
+           }
+
+
+       .dropdown {
+           width: 100%;
+           background-color: black;
+       }
+
+       .abc {
+           margin-left: 4%;
+       }
+       .topnav {
+           background-color: black;
+           position: absolute;
+           padding-top: 1px;
+           top: 0;
+           left: 0;
+           right: 0;
+           width: 100%;
+           transition: top 0.3s;
+           box-shadow: 0 4px 8px 0 yellow;
+       }
+
+       .a {
+           margin-left: 80px;
+       }
+       .sidenavPosition {
+           cursor: pointer;
+           text-decoration: none;
+           font-size: 15px;
+           background-color: black;
+           border: none;
+           color: gray;
+           border-bottom: 3px solid transparent;
+           margin-top: 8px;
+       }
+
+           .sidenavPosition:hover {
+               color: white;
+               cursor: pointer;
+               border-bottom: 3px solid red;
+           }
+
+
+    </style>
+    
+</head>
+<body>
+    <div class="topnav">
+        <div class="a">
+            <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("EveryDayValue", "Home")'" value="EVERYDAY VALUE" />
+            <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("MakeItAMeal", "Home")'" value="MAKE IT A MEAL " />
+            <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("MealBox", "Home")'" value="MEAL BOX " />
+            <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("Sharing", "Home")'" value="SHARING " />
+            <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("Promotions", "Home")'" value="PROMOTIONS" />
+            <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("Snacks", "Home")'" value="SNAKS" />
+            <input class="sidenavPosition" type="submit" name="name" onclick="location.href='@Url.Action("MidNightDeals", "Home")'" value="MIDNIGHT DEALS" />
+        </div>
+    </div>
+
+    <br><br>
+
+
+    @using (@Html.BeginForm("Login", "RegLogin", FormMethod.Post))
+{
+    <div class="form">
+
+        <div class="imgcontainer">
+            <img src="~/ContentStyle/login_Image.png" alt="Avatar" class="avatar"><br>
+            Login
+        </div>
+
+        <div class="container">
+
+            @Html.LabelFor(model => model.Email)<br>
+
+            @Html.TextBoxFor(model => model.Email) <br>
+
+            @Html.ValidationMessageFor(model => model.Email)<br>
+            @Html.LabelFor(model => model.Password)<br>
+
+            @Html.EditorFor(model => model.Password)<br>
+
+
+            @Html.ValidationMessageFor(model => model.Password)<br>
+
+          <span style="color:red"> 
+               @Html.DisplayFor(model => model.LoginErrorMessage)
+  
+              </span>      
+                <button class="Loginbutton" type="submit" onclick="location.href='@Url.Action("EveryDayValue","Home")'" name="name">Login</button><br>
+           
+       
+            <table cellspacing="10" cellpadding="10">
+                <tr>
+                    <td style="width:100%">
+                        <input class="Loginbutton" type="reset" name="name" value="Clear " /><br>
+    </td>
+                    <td style="width:100%">
+                        <input class="cancelbtn" type="submit" onclick="location.href='@Url.Action("EveryDayValue","Home")'" name="name" value="Cancle " />
+     <br></td>
+              
+                  
+                </tr>
+
+            </table>
+            <p>
+                Don't have an account!<a class="container signin" href="@Url.Action("Registration", "RegLogin")">SignUp</a>
+            </p>
+        </div>
+    </div>
+
+}
+   
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @Html.ViewData["Message"]
+
+
+
+
+</body>
+</html>
